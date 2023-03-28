@@ -1,0 +1,58 @@
+<table class="table table-striped table-dark">
+    <thead class="table-light">
+      <tr>
+        <th scope="col">S.NO</th>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr   *ngFor="let data of usersdata;let i = index">
+        <th>{{i+1}}</th>
+        <th>{{data.id}}</th>
+        <td>{{data.name}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.password}}</td>
+        <td>{{data.phone}}</td>
+        <td> <button class="btn btn-success mr-2" style="margin-right: 2px!important;" (click)="EditUser(data.id)">Edit</button> <button class="btn btn-danger" (click)="deleteUser(data.id)">Delete</button></td>
+      </tr>
+    
+    </tbody>
+  </table>
+
+  <!-- <p-table  [value]="usersdata" [paginator]="true" [rows]="10" >
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th *ngFor="let col of columns">
+                {{col.header}}
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+        <tr>
+          <tr   *ngFor="let data of usersdata;let i = index">
+            <th>{{i+1}}</th>
+            <th>{{data.id}}</th>
+            <td>{{data.name}}</td>
+            <td>{{data.email}}</td>
+            <td>{{data.password}}</td>
+            <td>{{data.phone}}</td>
+            <td> <button class="btn btn-success mr-2" style="margin-right: 2px!important;" (click)="EditUser(data.id)">Edit</button> <button class="btn btn-danger" (click)="deleteUser(data.id)">Delete</button></td>
+         
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft" let-state>
+        {{state.first}}
+        <button type="button" pButton icon="pi-refresh"></button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+        <button type="button" pButton icon="pi-cloud-upload"></button>
+    </ng-template>
+    <ng-template let-item pTemplate="paginatordropdownitem">
+        {{item.value}} - per page
+    </ng-template>
+</p-table> -->

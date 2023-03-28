@@ -1,0 +1,17 @@
+.bg{
+    background:#fff;
+}
+.bg2{
+    background: linear-gradient(to right, rgba(7, 62, 158, 0.5), rgba(46, 26, 135, 0.5))!important;
+    padding:20px!important;
+    height:700px;
+}
+input.ng-invalid.ng-touched {
+    border: red 1px solid;
+}
+.text-danger{
+    font-size: small!important;
+}
+.card{
+    border-radius: 100px!important;
+}

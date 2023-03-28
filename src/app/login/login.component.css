@@ -1,0 +1,19 @@
+.bg{
+   background: url('/assets/images/b6.jpg');
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:550px;
+   opacity: 0.8;
+}
+.card{
+    background: linear-gradient(to right, rgba(7, 62, 158, 0.5), rgba(46, 26, 135, 0.5))!important;
+    color: #fff!important;
+    width: 350px;
+    height:390px;
+    opacity: 99;
+}
+input.ng-invalid.ng-touched {
+    border: red 2px solid;
+}

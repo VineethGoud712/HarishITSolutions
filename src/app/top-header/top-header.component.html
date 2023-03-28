@@ -1,0 +1,58 @@
+<div class="theader">
+<div style="display:flex;text-align: center;padding-left: 110px;" >
+ 
+  <div style="justify-content: right;  color: #fff!important;" class="me-5 d-none d-lg-block text-muted">
+    <span> <i class="fa fa-envelope me-3"></i>harishit.solutions@gmail.com</span>
+  </div>
+  <!-- Left -->
+
+  <!-- Right -->
+  <div style="text-align: right;  color: #fff!important;margin-left: 800px;">
+    <a href="" class="me-4 text-reset">
+      <i class="fa fa-facebook-f"></i>
+    </a>
+    <a href="" class="me-4 text-reset">
+      <i class="fa fa-twitter"></i>
+    </a>
+    <a href="" class="me-4 text-reset">
+      <i class="fa fa-google"></i>
+    </a>
+    <a href="" class="me-4 text-reset">
+      <i class="fa fa-instagram"></i>
+    </a>
+    <a href="" class="me-4 text-reset">
+      <i class="fa fa-linkedin"></i>
+    </a>
+    <a href="" class="me-4 text-reset">
+      <i class="fa fa-github"></i>
+    </a>
+  </div>
+  <!-- Right --> 
+  
+</div>
+</div>
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light" style="height:70px;">
+    <div class="container-fluid">
+      <a class="navbar-brand text-dark justify-content-center"  style="margin-left:250px;font-weight: 400;
+       text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;letter-spacing: 1.5px;color:rgb(10, 10, 69)!important;">HarishITSolutions</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center ml-3" id="navbarNavAltMarkup">
+        <div class="navbar-nav " >
+          <a class="nav-link"  routerLink="/home" routerLinkActive="active" >Home</a>
+          <a class="nav-link" routerLink="/aboutus" routerLinkActive="active" >About Us</a>
+          <a class="nav-link"  routerLink=" " routerLinkActive="active">Services</a>
+           <a class="nav-link"  routerLink="/apply" routerLinkActive="active" >Apply JOB</a>
+          <a class="nav-link"  routerLink="/contactus" routerLinkActive="active" >Contact US</a>
+          <a *ngIf="!service.loggedIn()" class="nav-link " routerLink="/login" routerLinkActive="active" >Login</a>
+          <a *ngIf="!service.loggedIn()" class="nav-link " routerLink="/register" routerLinkActive="active">SignUp</a>
+          <a *ngIf="service.loggedIn()" class="nav-link " routerLink="/adminDashboard" style="cursor: pointer;" routerLinkActive="active">Dashboard</a>
+          <a *ngIf="service.loggedIn()" class="nav-link " (click)="logout()" style="cursor: pointer;">LogOut</a>
+         
+        </div>
+      </div>
+    </div>
+</nav>
+
+
