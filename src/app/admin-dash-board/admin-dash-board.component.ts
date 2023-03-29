@@ -75,24 +75,11 @@ export class AdminDashBoardComponent implements OnInit{
     );
   }
 
-  registerHere(){
-    console.log();
-
-  }
 
 
 
 
 
-onlyAlphabetsAllowed(event:any): boolean {
-  const charCode = event.keyCode;
- 
-  if ((charCode < 65 || (charCode > 90 && charCode < 97 )) || (charCode < 97 || charCode > 122) ) {
-    return false;
-  }
-  return true;
-
-}
 
 
 get f() { return this.registerForm.controls; }
@@ -100,9 +87,14 @@ get f() { return this.registerForm.controls; }
   
 
 saveJob(){
-this.service.saveJob(this.registerForm.value).subscribe(res=>{
+this.service.saveJob(this.registerForm.value).subscribe((res:any)=>{
   console.log(res);
-  
+  if(res['success']==="true"){
+ this.toastr.success(res['message'],'SUCCESS')
+ this.createForm();
+  }else{
+    this.toastr.error(res['message'],'ERROR')
+  }
 })
 }
 
