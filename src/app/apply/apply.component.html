@@ -1,16 +1,53 @@
 <div class="applyUs">
-
-    <div class="row contactUs">
-        <div class="col-12" style="padding-top:50px!important;padding:200px;align-items: center;">
-            <div class="card" style="width: 100%;">
-                <div class="card-body" style="height: 400px;">
-                    <div class="card-header m-0 p-0">
-                       <h1 class="m-0 p-1" style="font-weight: 500;">APPLY JOB HERE</h1>
-                      </div>
-                      <div class="container" style="padding: 20px;">
-                        
-                      </div>
-              </div>
-        </div>
+    <div class="container" style="padding-top: 80px;padding-left: 40px;">
+        <h1 class="h1">APPLY JOB</h1>
+        <p>HarishITSolutions was founded in [Year], and we have accomplished so much over the years. To create a world where [ the solution your business solves] has always been our goal.</p>
+        <p>Our goal is to provide our customers with the best Product at the best possible market price without compromising quality.</p>
+     </div>
+     
+   
+</div>
+<div class="card mt-1" style="width: 100%;">
+    <div class="card-header m-0 p-0 bg-light">
+        <h1 class="m-0 p-1" style="font-weight: 350;">Postions In Our Company</h1>
+ </div>
+ <div class="container" style="padding: 20px;">
+    <div class="row" style="display:flex;flex-wrap: wrap;">
+    <mat-card class="example-card">
+        <mat-card-header>
+          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+          <mat-card-title>Shiba Inu</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>This card has divider and indeterminate progress as footer</p>
+          <p>{{ longText }}</p>
+          <mat-divider></mat-divider>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button (click)="open(content)">View Full Details</button>
+         
+        </mat-card-actions>
+        <mat-card-footer>
+     
+        </mat-card-footer>
+      </mat-card>
     </div>
 </div>
+</div>
+
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Apply Job Details</h4>
+		<button type="button" class="btn-close btn-danger" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body modal-lg">
+	
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" >Apply Now</button>
+	</div>
+</ng-template>
+
+
+

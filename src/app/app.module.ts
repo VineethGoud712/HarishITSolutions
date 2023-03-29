@@ -25,6 +25,10 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { ApplyComponent } from './apply/apply.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { AdminDashBoardComponent } from './admin-dash-board/admin-dash-board.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { MaterialModule } from './material/material.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,9 +47,13 @@ import { AdminDashBoardComponent } from './admin-dash-board/admin-dash-board.com
    
   ],
   imports: [
+    MaterialModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatCardModule,
+    MatDividerModule,
+    MatProgressBarModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule, 
@@ -55,7 +63,8 @@ import { AdminDashBoardComponent } from './admin-dash-board/admin-dash-board.com
      ToastrModule.forRoot(),
      ButtonModule,
      TableModule,
-     NgbModule
+     NgbModule,
+     MaterialModule
      //MatAutocompleteModule, MatCheckboxModule, MatButtonModule, MatFormFieldModule, MatDatepickerModule, MatRadioModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatSlideToggleModule 
   
   ],
