@@ -26,6 +26,10 @@ export class ApiService {
     return this.http.get("http://localhost:8080/userDetails");
   }
 
+  getUsersDetails(id:any){
+    return this.http.get("http://localhost:8080/user/"+id);
+  }
+
   getAppiledUsers(){
     return this.http.get("http://localhost:8080/getAppliedJobdetails");
   }
@@ -34,8 +38,13 @@ export class ApiService {
     return this.http.get("http://localhost:8080/getAppliedJobsByUserId/"+userId);
   }
 
+ 
   deketeuser(id:any){
     return this.http.delete("http://localhost:8080/delete/"+id);
+  }
+
+  updateuser(id:any,body:any){
+    return this.http.put("http://localhost:8080/update/"+id,body);
   }
 
   deleteAppiledJobUser(id:any){

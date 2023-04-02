@@ -10,11 +10,16 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ApplyComponent implements OnInit{
   closeResult = '';
+  AppliedJobsByUserIdDetails:any
+  angularFlag:any;
+  javaFlag:any;
+  count:any;
   longText = `The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog
   from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was
   originally bred for hunting.`;
   constructor(private modalService: NgbModal,private service :ApiService,private toast:ToastrService) {}
   ngOnInit(){
+    this.count = 0;
    this.getAppliedJobsByUserId();
   }
 
@@ -129,9 +134,19 @@ export class ApplyComponent implements OnInit{
 }
 
 getAppliedJobsByUserId(){
-  this.service.getAppliedJobsByUserId(localStorage.getItem('userId')).subscribe(res=>{
-    console.log(res);
-    
+
+  this.service.getAppliedJobsByUserId(localStorage.getItem('userId')).subscribe((res:any)=>{
+    console.log(res['jobDetails']);
+    this.AppliedJobsByUserIdDetails = res['jobDetails'];
+    this.AppliedJobsByUserIdDetails.forEach((ele:any) => {
+       if(ele.applyedRole === 'Java Developer'){
+          this.javaFlag = true;
+       }
+
+       if(ele.applyedRole === 'Angular Developer'){
+         this.angularFlag = true;
+       }
+    });
   })
   
 }

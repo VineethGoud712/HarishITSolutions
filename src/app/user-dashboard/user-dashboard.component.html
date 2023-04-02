@@ -1,10 +1,14 @@
 <div class="container ">
-<div class="row ">
-    <div class="col pl-1">
-    <img class="img" src="/assets/images/profile.jpg" width="300px" height="270px"><hr>
+    <div class="row bg-light">
+     <h2 class="text-dark text-center text-uppercase">{{greetingMsg}},{{getUsersDetails?.firstName}} {{getUsersDetails?.lastName}} ,{{datetime}}</h2>
+    </div>
+<div class="row " style="padding-top: 40px;">
+    <div class="col-3 pl-1">
+    <img class="img" src="/assets/images/profile.jpg" width="250px" height="250px"> <hr>
     <table>
         <tr class="name">
-            <th class="name"><h2>Jeremy Rose</h2></th>
+            <th class="name"><h2>{{getUsersDetails?.firstName}} {{getUsersDetails?.lastName}}
+                 <i  class="fa fa-edit" title="Click Here to Edit " (click)="open(content)" style="cursor: pointer;"></i></h2> </th>
             <div>
             
           
@@ -12,7 +16,7 @@
         </tr>
     </table>
 
-    <small class="text-primary"><b>Product Designer</b></small>
+    <small class="text-primary"><b>Developer</b></small>
     <br><br>
     <h5>Ratings</h5>
     <p class="pl-1">8.6
@@ -24,32 +28,46 @@
     </p>
     <div class="msg">
         <span class="bi bi-envelope "><b>Send message</b></span>
-        <button class="btn text-primary bi bi-check " type="button">Contacts</button>
+        <button class="btn1 text-primary bi bi-check " routerLink="/contactus" type="button">Contacts</button>
     </div><br>
 
     </div>
 
-    <div class="col pl-1" >
+    <div class="col-6 pl-1" >
+  
       <div class="info text-white bg-dark ">
             <h5 class="text p-1">Personal Information</h5>
         </div>
         <div class="details">
         <table class="table">
             <tr>
-                <th class="qualification">Qualification</th>
-                <td>:  B.tech</td>
+                <th class="qualification">Full Name</th>
+                <td>: {{getUsersDetails?.firstName}} {{getUsersDetails?.lastName}}</td>
+            </tr>
+         
+            <tr>
+                <th class="qualification">Adhaar No</th>
+                <td>: {{getUsersDetails?.adhaarNo}}</td>
             </tr>
             <tr>
-                <th class="mobilenumber">Mobile Number</th>
-                <td>:  2139122222</td>
+                <th class="qualification">Qualification</th>
+                <td>: {{getUsersDetails?.qualification}}</td>
+            </tr>
+            <tr>
+                <th class="mobilenumber">Branch</th>
+                <td>:  {{getUsersDetails?.branch}}</td>
+            </tr>
+            <tr>
+                <th class="mobilenumber">Pass Out Year</th>
+                <td>:  {{getUsersDetails?.passedOutYear}}</td>
             </tr>
             <tr>
                 <th class="gender">Gender</th>
-                <td>: Male</td>
+                <td>: {{getUsersDetails?.gender}}</td>
             </tr>
             <tr>
                 <th class="age">Age</th>
-                <td>:  27</td>
+                <td>:  {{getUsersDetails?.age}}</td>
             </tr>
 
         </table>
@@ -61,15 +79,21 @@
         <table class="table">
             <tr >
                 <th class="phn">Phone</th>
-                <td class="text-primary ">: +11223344455</td>
+                <td >: {{getUsersDetails?.phone}}</td>
             </tr>
+
+            <tr >
+                <th class="phn">Alternative Phone</th>
+                <td >: {{getUsersDetails?.alternativePhone}}</td>
+            </tr>
+
             <tr>
                 <th class="address">Address</th>
-                <td>: 525,E64 Street ,New York,USA</td>
+                <td>: {{getUsersDetails?.perminentAdd}} </td>
             </tr>
             <tr>
                 <th class="email">Email</th>
-                <td class="text-primary">: harishit@gmail.com</td>
+                <td>: {{getUsersDetails?.email}}</td>
             </tr>
             <tr>
                 <th class="site">Site</th>
@@ -82,10 +106,244 @@
         <table class="table">
             <tr>
                 <th class="jobs" style="width: 120px;">Number of Jobs</th>
-                <td>: 20</td>
+                <td>: 2</td>
             </tr>
         </table>
+    </div>
+    <div class="col-3 pl-1" >
+
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                  Settings
+                </button>
+              </h2>
+              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                  Courses Links
+                </button>
+              </h2>
+              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                  Logins
+                </button>
+              </h2>
+              <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+              </div>
+            </div>
+          </div>
+
     </div>
 
 </div>
 </div>
+
+
+<ng-template #content let-modal>
+	<div class="modal-header bg-dark text-white " style="height:50px!important">
+		<h1 class="modal-title" id="modal-basic-title">Profile update</h1>
+		<button type="button" class="btn-close bg-white" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+        <div class="row">
+      
+            <form [formGroup]="registerForm" (ngSubmit)="registerHere()"  >
+         
+                <div class="row " >
+                
+  
+                  <div class="col p-1">
+  
+                    <div class="mb-1" >
+                 
+                      <input (keypress)="onlyAlphabetsAllowed($event)" type="text" class="form-control" id="exampleFormControlInput1" formControlName="firstName" placeholder="Enter First Name">
+                      
+                       <div class="text-danger fs-6 p=0 m-0"  *ngIf="f.firstName.invalid && f.firstName.touched ">First Name is required</div>
+                      
+                     
+                    </div>
+                   
+                  </div>
+  
+                  <div class="col p-1">
+  
+                    <div class="mb-1" >
+                 
+                      <input (keypress)="onlyAlphabetsAllowed($event)" type="text" class="form-control" id="exampleFormControlInput1" formControlName="lastName" placeholder="Enter Last Name">
+                       <div class="text-danger fs-6 p=0 m-0"  *ngIf="f.lastName.invalid && f.lastName.touched ">Last Name is required</div>
+                     
+                      
+                    </div>
+                  </div>
+               </div>
+                 
+                 
+              
+                <div class="row">
+                  <div class="col p-1">
+                    <div class="mb-1">
+                      <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="email" placeholder="Enter Email">
+                      <div class="text-danger fs-6 p=0 m-0" *ngIf="f.email.invalid && f.email.touched ">Email is required</div>
+                       <!-- <div class="text-danger fs-6 p=0 m-0" *ngIf="f.email.errors.email">Email must be a valid email address</div> -->
+                    </div>
+                  </div>
+                  <div class="col m-0 p-1" style="display: none;">
+                    <div class="mb-1 m-0" disabled>
+                      <input type="password" class="form-control" id="exampleFormControlInput1" formControlName="password" placeholder="Enter Password"  >
+                      <div class="text-danger fs-6 p=0 m-0" *ngIf="f.password.invalid && f.password.touched ">Password is required</div>
+                        <!-- <div class="text-danger fs-6 p=0 m-0" *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div> -->
+                  
+                      
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col p-1" style="display: none;">
+                    <div class="mb-1">
+                      <input type="password" class="form-control" id="exampleFormControlInput1" formControlName="confirmpassword" placeholder="Enter Confirm Password" disable>
+                      <div class="text-danger fs-6 p=0 m-0" *ngIf="f.confirmpassword.invalid && f.confirmpassword.touched ">ConfirmPassword is required</div>
+                      <!-- <div class="text-danger fs-6 p=0 m-0" *ngIf="f.password.value != f.confirmpassword.value  ">Password and Confirm Password doesn't match</div> -->
+                    </div>
+                  </div>
+                  <div class="col m-0 p-1">
+                    <div class="mb-1 m-0">
+                      <input type="text" (keypress)="onlyNumberAllowed($event)" class="form-control" id="exampleFormControlInput1" formControlName="phone" placeholder="Enter Mobile">
+                      <div class="text-danger fs-6 p=0 m-0" *ngIf="f.phone.invalid && f.phone.touched ">Mobile is required</div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col p-1">
+                    <div class="mb-1">
+                      <input type="text" (keypress)="onlyNumberAllowed($event)" class="form-control" id="exampleFormControlInput1" formControlName="alternativePhone" placeholder="Alternative Mobile">
+                      <div class="text-danger fs-6 p=0 m-0" *ngIf="f.alternativePhone.invalid && f.alternativePhone.touched ">Alternative Mobile is required</div>
+                    </div>
+                  </div>
+                  <div class="col m-0 p-1">
+                    <div class="mb-1 m-0">
+                      <input  (keypress)="onlyNumberAllowed($event)" type="text" class="form-control" id="exampleFormControlInput1" formControlName="adhaarNo" placeholder="Enter Adhaar Number">
+                      <div class="text-danger fs-6 p=0 m-0" *ngIf="f.adhaarNo.invalid && f.adhaarNo.touched ">Adhaar No is required</div>
+                    </div>
+                  </div>
+                  
+                </div>
+  
+             
+                <div class="row">
+                  <div class="col p-1">
+                    <div class="mb-1">
+                      <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="age" placeholder="Enter Age">
+                      <div class="text-danger fs-6 p=0 m-0" *ngIf="f.age.invalid && f.age.touched ">Age is required</div>
+                    </div>
+                  </div>
+                  <div class="col m-0 p-1">
+                    <div class="mb-1 m-0">
+                      <select class="form-select" aria-label="Default select example" formControlName="gender" >
+                        <option value="0">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                      </select>
+                      <div class="text-danger fs-6 p=0 m-0" *ngIf="f.gender.invalid && f.gender.touched ">Gender is required</div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="row">
+                  <div class="col m-0 p-1">
+                  <div class="mb-1 m-0">
+                    <select class="form-select" aria-label="Default select example" formControlName="qualification" (change)="selectdegree($event.target)">
+                      <option value="0">Select Qualification</option>
+                      <option value="Degree">Degree</option>
+                      <option value="B.Tech">B.Tech</option>
+                    
+                    </select>
+                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.qualification.invalid && f.qualification.touched "> Qualification is required</div>
+                  </div>
+                </div>
+                </div>
+                <div class="row" *ngIf="!degreeFlag">
+                  <div class="col m-0 p-1">
+                  <div class="mb-1 m-0">
+                    <select class="form-select" formControlName="branch" aria-label="Default select example" (change)="selectBranch($event.target,'btech')">
+                      <option value="0">Select Branch</option>
+                      <option value="CSE">CSE</option>
+                      <option value="ECE">ECE</option>
+                      <option value="MECH">MECH</option>
+                      <option value="EEE">EEE</option>
+                     
+                    </select>
+                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.branch.invalid && f.branch.touched ">Branch is required</div>
+                  </div>
+                </div>
+                </div>
+  
+                <div class="row" *ngIf="degreeFlag">
+                  <div class="col m-0 p-1">
+                  <div class="mb-1 m-0">
+                    <select class="form-select" formControlName="branch" aria-label="Default select example" (change)="selectBranch($event.target,'degree')">
+                      <option value="0">Select Branch</option>
+                      <option value="B.A.">B.A. (Bachelor of Arts)</option>
+                      <option value="B.Com.">B.Com. (Bachelor of Commerce)</option>
+                      <option value="B.Sc.">B.Sc. (Bachelor of Science)</option>
+                    </select>
+                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.branch.invalid && f.branch.touched ">Branch is required</div>
+                  </div>
+                  
+                </div>
+                </div>
+                
+                
+              
+                <div class="row">
+                  <div class="col m-0 p-1">
+                  <div class="mb-1 m-0">
+                    <select class="form-select" formControlName="passedOutYear" aria-label="Default select example">
+                      <option value="0">Select Passed Out Year</option>
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2022">2022</option>
+                      <option value="2023">2023</option>
+                    </select>
+                     <div class="text-danger fs-6 p=0 m-0" *ngIf="f.passedOutYear.invalid && f.passedOutYear.touched ">This Field  is required</div>
+                  </div>
+                </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col m-0 p-1">
+                    <textarea class="form-control" formControlName="perminentAdd" placeholder="Enter Perminent Address" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.perminentAdd.invalid && f.perminentAdd.touched ">Address is required</div>
+                  </div>
+                 
+                  
+                </div>
+  
+            
+  
+  
+               
+              </form>
+          </div>
+	</div>
+	<div class="modal-footer">
+		<button type="submit" class="btn btn-success" (click)="editUser()">Update</button>
+	</div>
+</ng-template>
+
+
+
+

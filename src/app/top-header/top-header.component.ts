@@ -12,7 +12,7 @@ import { ApiService } from '../api.service';
 export class TopHeaderComponent implements OnInit {
   loginFlag:any;
   message!: string;
-
+dashBoardName:any;
  
 constructor(private route:Router,private toast:ToastrService,public service :ApiService){
 
@@ -53,6 +53,7 @@ constructor(private route:Router,private toast:ToastrService,public service :Api
         
         this.route.navigate(['adminDashboard']);
       }else{
+        
         this.route.navigate(['userDashboard']);
       }
 
