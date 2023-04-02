@@ -26,8 +26,20 @@ export class ApiService {
     return this.http.get("http://localhost:8080/userDetails");
   }
 
+  getAppiledUsers(){
+    return this.http.get("http://localhost:8080/getAppliedJobdetails");
+  }
+
+  getAppliedJobsByUserId(userId:any){
+    return this.http.get("http://localhost:8080/getAppliedJobsByUserId/"+userId);
+  }
+
   deketeuser(id:any){
     return this.http.delete("http://localhost:8080/delete/"+id);
+  }
+
+  deleteAppiledJobUser(id:any){
+    return this.http.delete("http://localhost:8080/deleteAppiledJobUser/"+id);
   }
 
 
@@ -41,6 +53,11 @@ export class ApiService {
     return this.http.post('http://localhost:8080/saveJob',body)
   }
 
+  saveAppiledJob(body:any){
+
+    return this.http.post('http://localhost:8080/saveAppliedJobUsers',body)
+  }
+
   saveContact(body:any){
 
     return this.http.post('http://localhost:8080/saveContact',body)
@@ -50,6 +67,14 @@ export class ApiService {
 
   loggedIn(){
     return !!localStorage.getItem('username');
+  }
+
+  isAdmin(){
+    if(localStorage.getItem('username') === 'ADMIN'){
+      return true;
+    }else{
+      return false;
+    }
   }
 
   }

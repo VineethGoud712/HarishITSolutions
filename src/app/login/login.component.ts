@@ -71,6 +71,7 @@ export class LoginComponent {
           
           this.toastr.success(res['message'],'SUCCESS')
         }else{
+          localStorage.setItem("userId",res['UserId']);
           this.route.navigate(['/userDashboard']);
           this.toastr.success(res['message'],'SUCCESS')
         }

@@ -31,9 +31,31 @@ constructor(private route:Router,private toast:ToastrService,public service :Api
     logout(){
         localStorage.removeItem('username');
         localStorage.removeItem('password');
+        localStorage.removeItem('userId');
         this.toast.success('Logged Out Successfully ','SUCCESS');
         this.route.navigate(['home']);
     
+    }
+
+
+    applyJob(){
+      if(localStorage.getItem('username') && localStorage.getItem('password')){
+         this.route.navigate(['apply'])
+      }else{
+        this.toast.warning('Please Login and Apply Job','Information');
+        this.route.navigate(['login']);
+      }
+    }
+
+    dashboards(){
+      if(localStorage.getItem('username') === 'ADMIN'){
+      
+        
+        this.route.navigate(['adminDashboard']);
+      }else{
+        this.route.navigate(['userDashboard']);
+      }
+
     }
   
   

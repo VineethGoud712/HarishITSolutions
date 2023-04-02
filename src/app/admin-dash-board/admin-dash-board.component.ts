@@ -27,12 +27,15 @@ export class AdminDashBoardComponent implements OnInit{
 	collectionSize = USERS.length;
 	countries:any;
   login :any;
-
+  appiledJobusers: any;
+   applyFlag:boolean | undefined;
 	constructor(private toastr: ToastrService,private service :ApiService,private route:ActivatedRoute,private userService:UsersService) {
 		this.refreshUsers();
 	}
   ngOnInit() {
+   
     this.getUsers();
+    this.getAppiledJobUsers();
 
     this.route.queryParams.subscribe(res=>{
       console.log(res);
@@ -50,6 +53,17 @@ export class AdminDashBoardComponent implements OnInit{
     this.service.getUsers().subscribe((res:any)=>{
       console.log(res);
       this.users = res['userDetails'];
+      
+    })
+  }
+
+
+    
+
+  getAppiledJobUsers(){
+    this.service.getAppiledUsers().subscribe((res:any)=>{
+      console.log(res);
+      this.appiledJobusers = res['jobDetails'];
       
     })
   }
@@ -102,6 +116,14 @@ deleteUser(id:any){
   this.service.deketeuser(id).subscribe(res=>{
     console.log(res);
     this.getUsers();
+  })
+}
+
+
+reject(id:any){
+  this.service.deleteAppiledJobUser(id).subscribe(res=>{
+    console.log(res);
+    this.getAppiledJobUsers();
   })
 }
 
