@@ -1,0 +1,52 @@
+.row{
+    padding-top: 55px;
+} 
+.specify h1,h5{
+        font-size: 15px;
+        font-weight: bold;
+        padding:1px;  
+}
+/* .row1{
+    padding-top: 20px;
+    padding-bottom: 13px;
+} */
+.bi{
+    padding-right: 30px;
+}
+.bi-envelope::before {
+    content: "\f32f";
+    padding-right: 15px;
+}
+/* .time{
+    padding-right: 90px;
+} */
+.btn{
+    background-color: rgb(169, 180, 245);
+    border: none;
+    opacity: 2.5;
+    padding-left: 20px;
+}
+/* .bi-eye::before {
+    content: "\f341";
+    padding-right: 7px;
+}
+.bi-person::before {
+    content: "\f4e1";
+    padding-right: 10px;
+} */
+
+.text {
+    font-size: 13px;
+    font-style: inherit;
+    opacity: 2;
+    word-spacing: 0.9px;
+    letter-spacing: 0.7px;
+}
+/* .jobs{
+    padding-right: 100px;
+} */
+.details{
+    width: 222px;
+}
+
+
