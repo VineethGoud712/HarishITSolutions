@@ -86,7 +86,8 @@
 	</div>
 
 	<div class="modal-footer">
-		<button type="button" class="btn btn-danger" (click)="applyJob('angular')" >Apply Now</button>
+		<button type="button" class="btn btn-danger" *ngIf="!angularFlag"  (click)="applyJob('angular')" >Apply Now</button>
+    <button type="button" class="btn btn-danger" *ngIf="angularFlag" disabled>You Have Already Appiled For This Role</button>
 	</div>
 </ng-template>
 
@@ -120,7 +121,8 @@
 	</div>
 
 	<div class="modal-footer">
-		<button type="button" class="btn btn-danger" (click)="applyJob('java')" >Apply Now</button>
+		<button type="button" class="btn btn-danger" *ngIf="!javaFlag" (click)="applyJob('java')" >Apply Now</button>
+    <button type="button" class="btn btn-danger"*ngIf="javaFlag" disabled> You Have Already Appiled For This Role </button>
 	</div>
 </ng-template>
 

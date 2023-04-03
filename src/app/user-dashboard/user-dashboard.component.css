@@ -1,5 +1,5 @@
-.row{
-    padding-top: 55px;
+.row1{
+    padding-top: 40px;
 } 
 .specify h1,h5{
         font-size: 15px;
@@ -20,7 +20,7 @@
 /* .time{
     padding-right: 90px;
 } */
-.btn{
+.btn1{
     background-color: rgb(169, 180, 245);
     border: none;
     opacity: 2.5;
@@ -46,7 +46,7 @@
     padding-right: 100px;
 } */
 .details{
-    width: 222px;
+    width: 320px;
 }
 
 
