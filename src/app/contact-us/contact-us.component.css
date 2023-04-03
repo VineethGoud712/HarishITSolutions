@@ -1,7 +1,38 @@
 .contactUs{
   
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    background: linear-gradient(to right, rgba(7, 62, 158, 0.5), rgba(46, 26, 135, 0.5));
+    background: linear-gradient(to right, rgb(95, 40, 139), rgb(76, 46, 156));
 width:100vw;
-height:70vh;
+height:45vh;
+line-height: 2;
+margin-bottom: 265px;
+background-image: url(/assets/images/cus.jpg);
+}
+.card{
+    width: 300px;
+    height: 300px; 
+}
+.card-body{
+    width: 400px;
+    height: 400px;
+}
+    
+.contact{
+    color: rgb(13, 77, 253);
+    line-height: 4; 
+    
+}
+.button{
+    line-height: 8;
+}
+
+.container{
+    float:left;
+    width: auto;
+    margin-left: 10%;
+    margin-right: 30%;
+    align-items: center;
+}
+.bi{
+    font-size: 2.0em;
 }
