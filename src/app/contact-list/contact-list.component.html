@@ -1,0 +1,30 @@
+<div class="card over-flow">
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">CONTACT ID</th>
+                <th scope="col">Full Name</th>
+             
+              
+                <th scope="col">Email</th>
+            
+                <th scope="col">SUBJECT</th>
+                <th scope="col">MESSAGE</th>
+        
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of contactlist">
+              <th >CON20230{{ u.id }}</th>
+                <td> {{ u.fullName | uppercase}} </td>
+                <td> {{ u.email }} </td>
+                <td> {{ u.subject }} </td>
+                <td> {{ u.message }} </td>
+             
+            </tr>
+        </tbody>
+    </table>
+    
+
+   </div>

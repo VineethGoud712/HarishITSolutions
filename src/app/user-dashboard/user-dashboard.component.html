@@ -1,6 +1,8 @@
 <div class="container ">
-    <div class="row bg-light">
-     <h2 class="text-dark text-center text-uppercase">{{greetingMsg}},{{getUsersDetails?.firstName}} {{getUsersDetails?.lastName}} ,{{datetime}}</h2>
+    <div class="row bg-light1 pt-2 pb-2">
+      <p class="first-head1 mt-2 text-center pb-1 m-0 p-0">{{day}}, {{this.monthId | titlecase}}</p>
+            <h1 class="first-head2 text-center m-0 p-0">{{dayDisplay}},{{getUsersDetails?.firstName |titlecase}} {{getUsersDetails?.lastName | titlecase}} </h1>
+     <!-- <h2 class="text-dark text-center text-uppercase">{{greetingMsg}},{{getUsersDetails?.firstName}} {{getUsersDetails?.lastName}} ,{{datetime}}</h2> -->
     </div>
 <div class="row " style="padding-top: 40px;">
     <div class="col-3 pl-1">
@@ -284,6 +286,8 @@
                       <option value="ECE">ECE</option>
                       <option value="MECH">MECH</option>
                       <option value="EEE">EEE</option>
+                      <option value="CIVIL">CIVIL</option>
+                      <option value="AGRI">AGRI</option>
                      
                     </select>
                     <div class="text-danger fs-6 p=0 m-0" *ngIf="f.branch.invalid && f.branch.touched ">Branch is required</div>

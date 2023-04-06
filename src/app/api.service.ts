@@ -1,22 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
+
+
   constructor(private http:HttpClient) { }
 
-  private messageSource = new BehaviorSubject('default message');
-  currentMessage = this.messageSource.asObservable();
+  private _refreshNeeds = new Subject<void>();
 
+
+
+
+  get refreshNeeds(){
+    return this._refreshNeeds;
+  }
 
   
-  changeMessage(message: string) {
-    this.messageSource.next(message)
-  }
+
 
   saveregisterform(body:any){
     return this.http.post('http://localhost:8080/save',body)
@@ -48,7 +53,11 @@ export class ApiService {
   }
 
   deleteAppiledJobUser(id:any){
-    return this.http.delete("http://localhost:8080/deleteAppiledJobUser/"+id);
+    return this.http.delete("http://localhost:8080/deleteAppiledJobUser/"+id).pipe(
+      tap(()=>{
+        this._refreshNeeds.next();
+      })
+    );
   }
 
 
@@ -72,6 +81,24 @@ export class ApiService {
     return this.http.post('http://localhost:8080/saveContact',body)
   }
 
+
+  saveRejectUser(body:any){
+
+    return this.http.post('http://localhost:8080/saveRejectJob',body)
+  }
+
+
+  getRejectJobdetails(){
+    
+    return this.http.get('http://localhost:8080/getRejectJobdetails');
+
+  }
+
+ 
+
+  getContactus(){
+    return this.http.get(' http://localhost:8080/getContactus');
+  }
 
 
   loggedIn(){

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, PatternValidator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../api.service';
@@ -17,9 +17,17 @@ export class RegistrationComponent implements OnInit{
   registerForm:any;
   options:any;
 
+selectedYear: number | undefined;
+years: number[] = [];
+ 
 
-  constructor(private toastr: ToastrService,private route:Router,private service:ApiService){
 
+
+  constructor(private toastr: ToastrService,private route:Router,private service:ApiService,private formBuilder: FormBuilder){
+    this.selectedYear = new Date().getFullYear();
+    for (let year = this.selectedYear; year >= 2010; year--) {
+      this.years.push(year);
+    }
   }
 
   ngOnInit(){
@@ -27,6 +35,8 @@ export class RegistrationComponent implements OnInit{
    this.createForm();
   
   }
+
+
   
   createForm(){
     this.registerForm =  new FormGroup(
@@ -35,12 +45,12 @@ export class RegistrationComponent implements OnInit{
         firstName:new FormControl('',[Validators.required]),
         lastName:new FormControl('',[Validators.required]),
         email:new FormControl('',[Validators.required,Validators.email]),
-        password:new FormControl('',[Validators.required]),
-        confirmpassword:new FormControl('',[Validators.required]),
-        phone:new FormControl('',[Validators.required]),
-        alternativePhone:new FormControl('',[Validators.required]),
-        age:new FormControl('',[Validators.required]),
-        adhaarNo:new FormControl('',[Validators.required]),
+        password:new FormControl('',[Validators.required,Validators.minLength(6)]),
+        confirmpassword:new FormControl('',[Validators.required,Validators.minLength(6)]),
+        phone:new FormControl('',[Validators.required,  Validators.pattern("/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*#?&^_-]).{8,}/")]),
+        alternativePhone:new FormControl('',[Validators.required,Validators.pattern("^((\\+91-?)|0)?[0-9]{10}$")]),
+        age:new FormControl('',[Validators.required,Validators.maxLength(2)]),
+        adhaarNo:new FormControl('',[Validators.required,Validators.maxLength(12),Validators.minLength(12)]),
         gender:new FormControl(0,[Validators.required]),
         qualification:new FormControl(0,[Validators.required]),
         branch:new FormControl(0,[Validators.required]),
@@ -127,13 +137,13 @@ onlyNumberAllowed(event:any): boolean {
 
 }
 
-onlyAlphabetsAllowed(event:any): boolean {
+
+onlyAlphabetsAllowed(event:any) {
   const charCode = event.keyCode;
  
-  if ((charCode < 65 || (charCode > 90 && charCode < 97 )) || (charCode < 97 || charCode > 122) ) {
-    return false;
+  if ((charCode >= 15 && charCode <= 64) || (charCode >= 123) || (charCode >= 96 && charCode <= 105)) {
+    event.preventDefault();
   }
-  return true;
 
 }
 

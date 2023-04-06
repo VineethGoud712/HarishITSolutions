@@ -29,19 +29,14 @@ export class LoginComponent {
 
    this.createLoginForm();
 
-   this.service.currentMessage.subscribe(message => this.message = message)
+ 
    
   }
 
 
-  sendMessage() {
-    this.messageEvent.emit(this.message)
-  }
+  
 
   
-  newMessage() {
-    this.service.changeMessage("Hello from Second Component")
-  }
 
   createLoginForm(){
 

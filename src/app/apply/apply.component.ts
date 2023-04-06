@@ -108,6 +108,7 @@ export class ApplyComponent implements OnInit{
       if(res['success'] === 'true'){
         this.modalService.dismissAll();
         this.toast.success(res['message'],'SUCCESS');
+        this.getAppliedJobsByUserId();
       
       }else{
         this.toast.error(res['message'],'ERROR');
@@ -123,7 +124,8 @@ export class ApplyComponent implements OnInit{
     this.service.saveAppiledJob(params).subscribe((res:any)=>{
       console.log(res);
       if(res['success'] === 'true'){
-       
+        this.modalService.dismissAll();
+        this.getAppliedJobsByUserId();
         this.toast.success(res['message'],'SUCCESS')
       }else{
         this.toast.error(res['message'],'ERROR');

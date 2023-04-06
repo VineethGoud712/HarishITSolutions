@@ -19,6 +19,13 @@ export class UserDashboardComponent implements OnInit{
   closeResult = "";
   greetingMsg:String = "";
   datetime:any;
+
+  daylist = ["Sunday", "Monday", "Tuesday", "Wednesday ", "Thursday", "Friday", "Saturday"];
+  monthArr = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
+  monthId: any;
+  day: any;
+  dayDisplay: any;
+
   constructor(private service:ApiService,private modalService: NgbModal,private toastr:ToastrService){
 
   }
@@ -178,27 +185,16 @@ onlyAlphabetsAllowed(event:any): boolean {
 }
 
 getGreeting(){
-var today = new Date()
-var curHr = today.getHours()
-
-if (curHr < 12) {
-  this.greetingMsg = "Good Morning"
-  
-} else if (curHr < 18) {
-  this.greetingMsg = "Good Afternoon"
-
-} else {
-
-  this.greetingMsg = "Good Evening"
-}
-this.getdateTime();
+this.monthId = this.monthArr[new Date().getMonth()] + " " + (new Date().getDate());
+    this.day = this.daylist[new Date().getDay()];
+    const date = new Date;
+    let hours = date.getHours();
+    this.dayDisplay = (hours < 12) ? "Good Morning" :
+      this.dayDisplay = (hours < 18) ? "Good Afternoon" :
+        ((hours <= 18 && hours >= 12) ? "Good Evening" : "Good Night");
 }
 
 
-getdateTime(){
-  var currentdate = new Date();
-this.datetime =  new Date().toLocaleString('en-IN'); 
-}
 
 
 

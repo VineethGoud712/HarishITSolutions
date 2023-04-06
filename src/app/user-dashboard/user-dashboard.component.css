@@ -6,6 +6,12 @@
         font-weight: bold;
         padding:1px;  
 }
+.bg-light1{
+    background: linear-gradient(to right, rgba(7, 62, 158, 0.5), rgba(46, 26, 135, 0.5));
+    color:white; 
+    border-radius: 10px;
+
+}
 /* .row1{
     padding-top: 20px;
     padding-bottom: 13px;
@@ -47,6 +53,13 @@
 } */
 .details{
     width: 320px;
+}
+.first-head1{
+    font-size: 20px;
+}
+.first-head2{
+    font-size: 28px;
+    font-weight: 370;
 }
 
 

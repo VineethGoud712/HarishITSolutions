@@ -24,6 +24,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.3.0-alpha1",
     "bootstrap-icons": "^1.10.3",
+    "chart.js": "^4.2.1",
     "font-awesome": "^4.7.0",
     "ng-sweet-alert": "^1.0.11",
     "ngx-toastr": "^16.1.0",

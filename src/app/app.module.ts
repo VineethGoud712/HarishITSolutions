@@ -29,6 +29,15 @@ import {MatCardModule} from '@angular/material/card';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { MaterialModule } from './material/material.module';
+// import { PrimengModule } from './primeng/primeng.module';
+import { RejectListComponent } from './reject-list/reject-list.component';
+import { ShortListComponent } from './short-list/short-list.component';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { AppiledUsersComponent } from './appiled-users/appiled-users.component';
+import { TotalUsersComponent } from './total-users/total-users.component';
+import { AddJobComponent } from './add-job/add-job.component';
+import { UsersService } from './users.service';
+import { GraphDashboardComponent } from './graph-dashboard/graph-dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +53,13 @@ import { MaterialModule } from './material/material.module';
     ApplyComponent,
     UserDashboardComponent,
     AdminDashBoardComponent,
+    RejectListComponent,
+    ShortListComponent,
+    ContactListComponent,
+    AppiledUsersComponent,
+    TotalUsersComponent,
+    AddJobComponent,
+    GraphDashboardComponent,
    
   ],
   imports: [
@@ -55,6 +71,7 @@ import { MaterialModule } from './material/material.module';
     MatDividerModule,
     MatProgressBarModule,
     FormsModule,
+    // PrimengModule,
     ReactiveFormsModule,
     HttpClientModule, 
    NgxUiLoaderModule,
@@ -68,7 +85,7 @@ import { MaterialModule } from './material/material.module';
      //MatAutocompleteModule, MatCheckboxModule, MatButtonModule, MatFormFieldModule, MatDatepickerModule, MatRadioModule, MatInputModule, MatSelectModule, MatSlideToggleModule, MatSlideToggleModule 
   
   ],
-  providers: [ApiService],
+  providers: [ApiService,UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

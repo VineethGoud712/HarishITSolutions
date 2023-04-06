@@ -1,131 +1,90 @@
-import { Component,OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../api.service';
 import { UsersService } from '../users.service';
+import { ContactListComponent } from '../contact-list/contact-list.component';
 
-
-const USERS:any = [];
-
+const USERS: any = [];
 
 @Component({
   selector: 'app-admin-dash-board',
   templateUrl: './admin-dash-board.component.html',
-  styleUrls: ['./admin-dash-board.component.css']
+  styleUrls: ['./admin-dash-board.component.css'],
 })
-export class AdminDashBoardComponent implements OnInit{
+export class AdminDashBoardComponent implements OnInit, AfterViewInit {
 
-  degreeFlag:boolean | undefined;
-  degreeFlag1:boolean = true;
-  registerForm:any;
-  options:any;
- 
-  users:any = [];
-  page = 1;
-	pageSize = 8;
-	collectionSize = USERS.length;
-	countries:any;
-  login :any;
-  appiledJobusers: any;
-   applyFlag:boolean | undefined;
-	constructor(private toastr: ToastrService,private service :ApiService,private route:ActivatedRoute,private userService:UsersService) {
-		this.refreshUsers();
-	}
+  contactListNumb: any;
+  totalUsernumb:any;
+  appiledUsers:any;
+  shortlistnumb:any;
+  rejectlistnumb:any;
+
+  @ViewChild(ContactListComponent) contactList: any;
+  Shortlistlength: any;
+  Shortlists: any;
+  RejectsList: any;
+
+  constructor(
+    private toastr: ToastrService,
+    private service: ApiService,
+    private route: ActivatedRoute,
+    private userService: UsersService
+  ) {}
+
+  ngAfterViewInit() {
+    this.contactListNumb = this.contactList.TotalContacts;
+  }
+
   ngOnInit() {
+    this.getSizesOfTabs();
+    this.getShortlistJobs();
+
+  this.service.refreshNeeds.subscribe(()=>{
    
-    this.getUsers();
-    this.getAppiledJobUsers();
-
-    this.route.queryParams.subscribe(res=>{
-      console.log(res);
-      // alert(JSON.stringify(res))
-      this.login = res['login'];
-    })
-
-    this.options = {opacity:1};
-    this.createForm();
-  }
-
+    setTimeout(() => {
+      this.getSizesOfTabs();
+      this.getShortlistJobs();
+    }, 1000);
   
+ 
+   })
 
-  getUsers(){
-    this.service.getUsers().subscribe((res:any)=>{
-      console.log(res);
-      this.users = res['userDetails'];
-      
+  }
+
+  getSizesOfTabs(){
+    this.userService.getSizesOfTabs().subscribe((res:any)=>{
+      if(res['success']=="true"){
+
+        this.totalUsernumb = res['TotalUsers'] || '';
+        this.appiledUsers = res['TotalAppileUsers'] || '';
+        this.contactListNumb = res['TotalContactUs'] || '';
+
+      }
     })
   }
 
-
-    
-
-  getAppiledJobUsers(){
-    this.service.getAppiledUsers().subscribe((res:any)=>{
+  getShortlistJobs(){
+    this.service.getRejectJobdetails().subscribe((res:any)=>{
       console.log(res);
-      this.appiledJobusers = res['jobDetails'];
+  
+      if(res['success']==="true"){
+        this.Shortlistlength = res['RejectjobDetails'] || [];
+       this.Shortlists =  this.Shortlistlength.filter((x:any)=>{return x.status == 'Shortlisted'});
+       console.log(this.Shortlists.length);
+       this.shortlistnumb = this.Shortlists.length;
+
+       this.RejectsList =  this.Shortlistlength.filter((x:any)=>{return x.status == 'Rejected'});
+
+       this.rejectlistnumb = this.RejectsList.length;
       
-    })
-  }
-
-	refreshUsers() {
-		this.countries =  this.users.map((users:any, i:number) => ({ id: i + 1, ...users })).slice(
-			(this.page - 1) * this.pageSize,
-			(this.page - 1) * this.pageSize + this.pageSize,
-		);
-	}
-
-
-  createForm(){
-    this.registerForm =  new FormGroup(
-      {
-        
-        jobTitle:new FormControl('',[Validators.required]),
-        jobResponsibilites:new FormControl('',[Validators.required]),
-      
-        jobRequirments:new FormControl('',[Validators.required]),
+      }else{
   
       }
-    );
-  }
-
-
-
-
-
-
-
-
-get f() { return this.registerForm.controls; }
-
-  
-
-saveJob(){
-this.service.saveJob(this.registerForm.value).subscribe((res:any)=>{
-  console.log(res);
-  if(res['success']==="true"){
- this.toastr.success(res['message'],'SUCCESS')
- this.createForm();
-  }else{
-    this.toastr.error(res['message'],'ERROR')
-  }
-})
-}
-
-deleteUser(id:any){
-  this.service.deketeuser(id).subscribe(res=>{
-    console.log(res);
-    this.getUsers();
-  })
-}
-
-
-reject(id:any){
-  this.service.deleteAppiledJobUser(id).subscribe(res=>{
-    console.log(res);
-    this.getAppiledJobUsers();
-  })
-}
+      
+    })
+    }
 
 
 }

@@ -1,0 +1,32 @@
+<div class="card over-flow">
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">JOB ID</th>
+                <th scope="col">USER NO</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Rejected Role</th>
+              
+                <th scope="col">Email</th>
+            
+                <th scope="col">Status</th>
+        
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of Shortlists">
+              <th >JOB20230{{ u.rejectId }}</th>
+                <th >EMP20230{{ u.userId }}</th>
+                <td> {{ u.name | uppercase}} </td>
+                <td  class="text-white text-center" style="background: rgb(77, 232, 102);"> {{ u.rejectedRole |uppercase }} </td>
+                <td> {{ u.email }} </td>
+               <td  class="text-white text-center" style="background: rgb(122, 242, 106);">{{ u.status }} </td>
+             
+        
+            </tr>
+        </tbody>
+    </table>
+    
+
+   </div>

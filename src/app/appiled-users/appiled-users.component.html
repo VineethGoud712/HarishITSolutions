@@ -1,0 +1,47 @@
+<div class="card over-flow">
+
+    <table class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col">JOB ID</th>
+                <th scope="col">USER NO</th>
+                <th scope="col">Full Name</th>
+                <th scope="col">Appiled Role</th>
+              
+                <th scope="col">Email</th>
+             
+
+            
+                <th scope="col">Mobile</th>
+            
+              
+                <th scope="col">Gender</th>
+      
+                <th scope="col">Qualification</th>
+                <th scope="col">Branch</th>
+              
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let u of appiledJobusers">
+              <th >JOB20230{{ u.id }}</th>
+                <th >EMP20230{{ u.userId }}</th>
+                <td> {{ u.firstName |uppercase}} {{ u.lastName | uppercase}}</td>
+                <td  class="text-white" style="background: rgb(242, 72, 72);"> {{ u.applyedRole |uppercase }} </td>
+                <td> {{ u.email }} </td>
+                <td> {{ u.phone }} </td>
+              
+                <td> {{ u.gender  }} </td>
+             
+                <td> {{ u.qualification |uppercase}} </td>
+                <td> {{ u.branch | uppercase}} </td>
+            
+                <td><button class="btn btn-success p-1 btn-sm mr-1" (click)="reject(u,'Shortlisted')">SHORT LIST</button> |  <button class="btn p-1 btn-danger btn-sm"  (click)="reject(u,'Rejected')">REJECT</button> </td>
+               
+            </tr>
+        </tbody>
+    </table>
+    
+
+   </div>

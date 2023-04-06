@@ -49,16 +49,26 @@
                 <div class="col p-1">
                   <div class="mb-1">
                     <input type="email" class="form-control" id="exampleFormControlInput1" formControlName="email" placeholder="Enter Email">
-                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.email.invalid && f.email.touched ">Email is required</div>
+                   
+                    <div *ngIf="f.email.touched && f.email.invalid" class="text-danger fs-6 p=0 m-0">
+                      <div *ngIf="f.email.errors?.required">* Email is required</div>
+                      <div *ngIf="f.email.errors?.email">Please Enter a Valid Email Address</div>
+                    </div>
                      <!-- <div class="text-danger fs-6 p=0 m-0" *ngIf="f.email.errors.email">Email must be a valid email address</div> -->
                   </div>
                 </div>
                 <div class="col m-0 p-1">
                   <div class="mb-1 m-0">
-                    <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="password" placeholder="Enter Password">
-                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.password.invalid && f.password.touched ">Password is required</div>
+                    <input type="password" class="form-control" id="exampleFormControlInput1" formControlName="password" placeholder="Enter Password">
+                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.password.invalid && f.password.touched "></div>
                       <!-- <div class="text-danger fs-6 p=0 m-0" *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div> -->
-                
+                      <div *ngIf="f.password.touched && f.password.invalid" class="text-danger fs-6 p=0 m-0">
+                        <div *ngIf="f.password.errors?.required">Password is required</div>
+                        <div *ngIf="f.password.errors?.minlength">  
+                           Password must contain at least one number, one uppercase and a
+                          lowercase letter and at least 8 characters<br />Password cannot
+                          contain whitespace</div>
+                      </div> 
                     
                   </div>
                 </div>
@@ -67,15 +77,22 @@
               <div class="row">
                 <div class="col p-1">
                   <div class="mb-1">
-                    <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="confirmpassword" placeholder="Enter Confirm Password">
-                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.confirmpassword.invalid && f.confirmpassword.touched ">ConfirmPassword is required</div>
-                    <!-- <div class="text-danger fs-6 p=0 m-0" *ngIf="f.password.value != f.confirmpassword.value  ">Password and Confirm Password doesn't match</div> -->
+                    <input type="password" class="form-control" id="exampleFormControlInput1" formControlName="confirmpassword" placeholder="Enter Confirm Password">
+                   
+          
+                    <div *ngIf="f.confirmpassword.touched && f.confirmpassword.invalid" class="text-danger fs-6 p=0 m-0">
+                      <div *ngIf="f.confirmpassword.errors?.required">confirm Password is required</div>
+                      <div *ngIf="f.confirmpassword.errors?.minlength">Password must be atleast 6 characters</div>
+                    </div>
                   </div>
                 </div>
                 <div class="col m-0 p-1">
                   <div class="mb-1 m-0">
                     <input type="text" (keypress)="onlyNumberAllowed($event)" class="form-control" id="exampleFormControlInput1" formControlName="phone" placeholder="Enter Mobile">
-                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.phone.invalid && f.phone.touched ">Mobile is required</div>
+                    <div *ngIf="f.phone.touched && f.phone.invalid" class="text-danger fs-6 p=0 m-0">
+                      <div *ngIf="f.phone.errors?.required">Please enter mobile number</div>
+                      <div *ngIf="f.phone.errors?.pattern">Please Enter 10 digit Mobile Number</div>
+                    </div> 
                   </div>
                 </div>
                 
@@ -84,13 +101,21 @@
                 <div class="col p-1">
                   <div class="mb-1">
                     <input type="text" (keypress)="onlyNumberAllowed($event)" class="form-control" id="exampleFormControlInput1" formControlName="alternativePhone" placeholder="Alternative Mobile">
-                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.alternativePhone.invalid && f.alternativePhone.touched ">Alternative Mobile is required</div>
+                    <div *ngIf="f.alternativePhone.touched && f.alternativePhone.invalid" class="text-danger fs-6 p=0 m-0">
+                      <div *ngIf="f.alternativePhone.errors?.required">Please Enter Alternative Mobile number</div>
+                      <div *ngIf="f.alternativePhone.errors?.pattern">Please Enter 10 digit Mobile Number</div>
+                    </div> 
                   </div>
                 </div>
                 <div class="col m-0 p-1">
                   <div class="mb-1 m-0">
                     <input  (keypress)="onlyNumberAllowed($event)" type="text" class="form-control" id="exampleFormControlInput1" formControlName="adhaarNo" placeholder="Enter Adhaar Number">
-                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.adhaarNo.invalid && f.adhaarNo.touched ">Adhaar No is required</div>
+                    
+                    <div *ngIf="f.adhaarNo.touched && f.adhaarNo.invalid" class="text-danger fs-6 p=0 m-0">
+                      <div *ngIf="f.adhaarNo.errors?.required">Adhaar Number is required</div>
+                      <div *ngIf="f.adhaarNo.errors?.maxlength">Adhaar Number Must be 12 digits</div>
+                      <div *ngIf="f.adhaarNo.errors?.minlength">Adhaar Number Must be 12 digits</div>
+                    </div> 
                   </div>
                 </div>
                 
@@ -100,8 +125,12 @@
               <div class="row">
                 <div class="col p-1">
                   <div class="mb-1">
-                    <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="age" placeholder="Enter Age">
-                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.age.invalid && f.age.touched ">Age is required</div>
+                    <input (keypress)="onlyNumberAllowed($event)" type="text" class="form-control" id="exampleFormControlInput1" formControlName="age" placeholder="Enter Age">
+                   
+                    <div *ngIf="f.age.touched && f.age.invalid" class="text-danger fs-6 p=0 m-0">
+                      <div *ngIf="f.age.errors?.required">Age is Required</div>
+                      <div *ngIf="f.age.errors?.maxlength">Please Enter a valid Age</div>
+                    </div> 
                   </div>
                 </div>
                 <div class="col m-0 p-1">
@@ -138,6 +167,8 @@
                     <option value="ECE">ECE</option>
                     <option value="MECH">MECH</option>
                     <option value="EEE">EEE</option>
+                    <option value="CIVIL">CIVIL</option>
+                    <option value="AGRI">AGRI</option>
                    
                   </select>
                   <div class="text-danger fs-6 p=0 m-0" *ngIf="f.branch.invalid && f.branch.touched ">Branch is required</div>
@@ -166,11 +197,9 @@
                 <div class="col m-0 p-1">
                 <div class="mb-1 m-0">
                   <select class="form-select" formControlName="passedOutYear" aria-label="Default select example">
-                    <option value="0">Select Passed Out Year</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
+                     <option value="0">Select Passed Out Year</option> 
+                    <option *ngFor="let year of years" [value]="year">{{year}}</option>
+                
                   </select>
                    <div class="text-danger fs-6 p=0 m-0" *ngIf="f.passedOutYear.invalid && f.passedOutYear.touched ">This Field  is required</div>
                 </div>

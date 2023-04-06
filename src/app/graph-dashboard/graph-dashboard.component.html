@@ -1,0 +1,118 @@
+<!-- <div class="card">
+    <p-chart type="bar" [data]="data" [options]="options"></p-chart>
+</div> -->
+<div class="card" >
+
+    <div class="container-fluid" style="display: flex;padding-left: 80px;padding-right: 80px;">
+      
+    <div class="boxs mr-2 b4">
+
+        <div class="container text-centerp-0" style="display:inline-block;">
+            <div class="float-left pt-4">
+               
+                <i class="bi bi-people"></i>
+                <span class="float-left" style="font-size: 80px;"> <b>{{totalUsernumb}}</b></span>
+            </div>
+           
+           
+           
+        </div>
+        <div class="row pt-1 text-center">
+            <b style="font-size: 20px;">USERS</b>
+        </div>
+
+    </div>
+
+    <div class="boxs mr-2 b3">
+        <div class="container text-centerp-0" style="display:inline-block;">
+            <div class="float-left pt-4">
+               
+                <i class="bi bi-stack"></i>
+                <span class="float-left" style="font-size: 80px;"> <b>{{appiledUsers}}</b></span>
+            </div>
+           
+           
+           
+        </div>
+        <div class="row pt-1 text-center">
+            <b style="font-size: 20px;">APPILED USERS</b>
+        </div>
+    </div>
+
+    
+    <div class="boxs mr-2 b1">
+        <div class="container text-centerp-0" style="display:inline-block;">
+            <div class="float-left pt-4">
+               
+                <i class="bi bi-bookmarks "></i>
+                <span class="float-left" style="font-size: 80px;"> <b>{{shortlistnumb}}</b></span>
+            </div>
+           
+           
+           
+        </div>
+        <div class="row pt-1 text-center">
+            <b style="font-size: 20px;">SHORT LISTS</b>
+        </div>
+        
+    </div>
+
+    <div class="boxs mr-2 b2">
+        <div class="container text-centerp-0" style="display:inline-block;">
+            <div class="float-left pt-4">
+               
+                <i class="bi bi-folder-x"></i>
+                <span class="float-left" style="font-size: 80px;"> <b>{{rejectlistnumb}}</b></span>
+            </div>
+           
+           
+           
+        </div>
+        <div class="row pt-1 text-center">
+            <b style="font-size: 20px;">REJECTIONS</b>
+        </div>
+
+    </div>
+
+
+
+
+    <div class="boxs mr-2 b5">
+        <div class="container text-centerp-0" style="display:inline-block;">
+            <div class="float-left pt-4">
+               
+                <i class="bi bi-bookmarks "></i>
+                <span class="float-left" style="font-size: 80px;"> <b>{{contactListNumb}}</b></span>
+            </div>
+           
+           
+           
+        </div>
+        <div class="row pt-1 text-center">
+            <b style="font-size: 20px;">CONTACTED USERS</b>
+        </div>
+        
+    </div>
+ 
+    </div>
+   
+
+
+<div class="row">
+    <div class="col-4">
+        <div style="width:100vw;height:500px">
+            <canvas id="myChart1" width="500" height="100" #myChart1></canvas>
+         </div>
+    </div>
+    <div class="col-8">
+        <div style="width:100%;">
+            <canvas id="myChart" width="500" height="250" #mychart></canvas>
+         </div>
+    </div>
+ 
+</div>
+
+
+</div>
+
+
