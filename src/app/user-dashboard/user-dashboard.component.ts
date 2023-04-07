@@ -20,6 +20,9 @@ export class UserDashboardComponent implements OnInit{
   greetingMsg:String = "";
   datetime:any;
 
+  selectedYear: number | undefined;
+years: number[] = [];
+
   daylist = ["Sunday", "Monday", "Tuesday", "Wednesday ", "Thursday", "Friday", "Saturday"];
   monthArr = ['JANUARY', 'FEBRUARY', 'MARCH', 'APRIL', 'MAY', 'JUNE', 'JULY', 'AUGUST', 'SEPTEMBER', 'OCTOBER', 'NOVEMBER', 'DECEMBER'];
   monthId: any;
@@ -27,7 +30,10 @@ export class UserDashboardComponent implements OnInit{
   dayDisplay: any;
 
   constructor(private service:ApiService,private modalService: NgbModal,private toastr:ToastrService){
-
+    this.selectedYear = new Date().getFullYear();
+    for (let year = this.selectedYear; year >= 2010; year--) {
+      this.years.push(year);
+    }
   }
 
   ngOnInit() {
@@ -83,15 +89,15 @@ export class UserDashboardComponent implements OnInit{
         email:new FormControl(this.getUsersDetails.email,[Validators.required,Validators.email]),
         password:new FormControl(this.getUsersDetails.password,[Validators.required]),
         confirmpassword:new FormControl(this.getUsersDetails.confirmpassword,[Validators.required]),
-        phone:new FormControl(this.getUsersDetails.phone,[Validators.required]),
+        phone:new FormControl(this.getUsersDetails.phone,[Validators.required,Validators.maxLength(10)]),
         alternativePhone:new FormControl(this.getUsersDetails.alternativePhone,[Validators.required]),
-        age:new FormControl(this.getUsersDetails.age,[Validators.required]),
-        adhaarNo:new FormControl(this.getUsersDetails.adhaarNo,[Validators.required]),
+        age:new FormControl(this.getUsersDetails.age,[Validators.required,Validators.maxLength(2)]),
+        adhaarNo:new FormControl(this.getUsersDetails.adhaarNo,[Validators.required,Validators.maxLength(12),Validators.minLength(12)]),
         gender:new FormControl(this.getUsersDetails.gender,[Validators.required]),
         qualification:new FormControl(this.getUsersDetails.qualification,[Validators.required]),
         branch:new FormControl(this.getUsersDetails.branch,[Validators.required]),
         passedOutYear:new FormControl(this.getUsersDetails.passedOutYear,[Validators.required]),
-        perminentAdd:new FormControl(this.getUsersDetails.perminentAdd,[Validators.required]),
+        perminentAdd:new FormControl(this.getUsersDetails.perminentAdd,[Validators.required,Validators.maxLength(25)]),
       }
     );
   }

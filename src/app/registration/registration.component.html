@@ -22,7 +22,7 @@
 
                   <div class="mb-1" >
                
-                    <input (keypress)="onlyAlphabetsAllowed($event)" type="text" class="form-control" id="exampleFormControlInput1" formControlName="firstName" placeholder="Enter First Name">
+                    <input  type="text" class="form-control" id="exampleFormControlInput1" formControlName="firstName" placeholder="Enter First Name">
                     
                      <div class="text-danger fs-6 p=0 m-0"  *ngIf="f.firstName.invalid && f.firstName.touched ">First Name is required</div>
                     
@@ -35,7 +35,7 @@
 
                   <div class="mb-1" >
                
-                    <input (keypress)="onlyAlphabetsAllowed($event)" type="text" class="form-control" id="exampleFormControlInput1" formControlName="lastName" placeholder="Enter Last Name">
+                    <input  type="text" class="form-control" id="exampleFormControlInput1" formControlName="lastName" placeholder="Enter Last Name">
                      <div class="text-danger fs-6 p=0 m-0"  *ngIf="f.lastName.invalid && f.lastName.touched ">Last Name is required</div>
                    
                     
@@ -91,7 +91,7 @@
                     <input type="text" (keypress)="onlyNumberAllowed($event)" class="form-control" id="exampleFormControlInput1" formControlName="phone" placeholder="Enter Mobile">
                     <div *ngIf="f.phone.touched && f.phone.invalid" class="text-danger fs-6 p=0 m-0">
                       <div *ngIf="f.phone.errors?.required">Please enter mobile number</div>
-                      <div *ngIf="f.phone.errors?.pattern">Please Enter 10 digit Mobile Number</div>
+                      <div *ngIf="f.phone.errors?.maxlength">Please Enter 10 digit Mobile Number</div>
                     </div> 
                   </div>
                 </div>
@@ -209,10 +209,13 @@
               <div class="row">
                 <div class="col m-0 p-1">
                   <textarea class="form-control" formControlName="perminentAdd" placeholder="Enter Perminent Address" id="exampleFormControlTextarea1" rows="3"></textarea>
-                  <div class="text-danger fs-6 p=0 m-0" *ngIf="f.perminentAdd.invalid && f.perminentAdd.touched ">Address is required</div>
-                </div>
+                  <div *ngIf="f.perminentAdd.touched && f.perminentAdd.invalid" class="text-danger fs-6 p=0 m-0">
+                    <div *ngIf="f.perminentAdd.errors?.required">*Address is Required</div>
+                    <div *ngIf="f.perminentAdd.errors?.maxlength">Please Enter only 25 characters</div>
+                  </div> 
                
                 
+              </div>
               </div>
 
               <div class="row">
